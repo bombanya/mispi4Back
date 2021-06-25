@@ -1,7 +1,7 @@
 package com.bombanya.web4.points;
 
-import com.bombanya.web4.mispi.AvrgTimeBetweenCLicksCounter;
-import com.bombanya.web4.mispi.PointCounter;
+import com.bombanya.web4.mbeans.AvrgTimeBetweenCLicksCounter;
+import com.bombanya.web4.mbeans.PointCounter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

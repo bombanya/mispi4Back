@@ -1,4 +1,4 @@
-package com.bombanya.web4.mispi;
+package com.bombanya.web4.mbeans;
 
 import org.springframework.jmx.export.annotation.ManagedOperation;
 import org.springframework.jmx.export.annotation.ManagedResource;
@@ -11,11 +11,11 @@ import java.util.concurrent.atomic.AtomicLong;
 @ManagedResource
 public class AvrgTimeBetweenCLicksCounter {
 
-    private final ConcurrentHashMap<String, UserClicksData> userToPoints = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<String, UserHitTimeData> userToPoints = new ConcurrentHashMap<>();
 
     @ManagedOperation
     public void addPoint(String username){
-        if (!userToPoints.containsKey(username)) userToPoints.put(username, new UserClicksData());
+        if (!userToPoints.containsKey(username)) userToPoints.put(username, new UserHitTimeData());
         userToPoints.get(username).incrTotalPoints();
     }
 
@@ -25,7 +25,7 @@ public class AvrgTimeBetweenCLicksCounter {
         return userToPoints.get(username).getAverageTime();
     }
 
-    private static class UserClicksData{
+    private static class UserHitTimeData {
         private final AtomicLong totalPoints = new AtomicLong();
         private final long firstClickTime = System.nanoTime();
         private final AtomicLong lastClickTime = new AtomicLong();
